@@ -1,0 +1,7 @@
+/home/zhenhtan/.local/lib/libmath_lib.a
+/home/zhenhtan/.local/bin/demo
+/home/zhenhtan/.local/include/math/math.h
+/home/zhenhtan/.local/lib/cmake/MathLib/MathLibTargets.cmake
+/home/zhenhtan/.local/lib/cmake/MathLib/MathLibTargets-noconfig.cmake
+/home/zhenhtan/.local/lib/cmake/MathLib/MathLibConfig.cmake
+/home/zhenhtan/.local/lib/cmake/MathLib/MathLibConfigVersion.cmake

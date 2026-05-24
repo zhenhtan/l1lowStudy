@@ -1,0 +1,6 @@
+
+hello_c:     file format elf64-x86-64
+
+Contents of section .rodata:
+ 2000 01000200 48656c6c 6f2c2041 7373656d  ....Hello, Assem
+ 2010 626c7920 66726f6d 20432100           bly from C!.    

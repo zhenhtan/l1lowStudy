@@ -1,0 +1,3 @@
+/home/zhenhtan/workspace/l1low/leaningProgram/asm_c_demo/CMakeFiles/hello_c.dir
+/home/zhenhtan/workspace/l1low/leaningProgram/asm_c_demo/CMakeFiles/edit_cache.dir
+/home/zhenhtan/workspace/l1low/leaningProgram/asm_c_demo/CMakeFiles/rebuild_cache.dir
