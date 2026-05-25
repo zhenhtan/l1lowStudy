@@ -13,7 +13,7 @@ public:
 
     // 3) 参数是 const 引用：函数内不能改入参，且避免拷贝
     void printWithPrefix(const std::string& prefix) const  {
-        prefix="new prefix"; // 错误：不能修改 const 引用参数
+        //prefix="new prefix"; // 错误：不能修改 const 引用参数
         std::cout << prefix << name_ << ", age=" << age_ << "\n";
     }
 
@@ -37,4 +37,21 @@ int main() {
     const User cu("Bob", 20);
     std::cout << cu.age() << "\n";   // OK：const 成员函数可被 const 对象调用
     // cu.grow();                     // 错误：非 const 成员函数不能用于 const 对象
+
+    // 5) 指针相关的 const 用法
+    int a = 1, b = 2;
+    const int *p1 = &a;   // 指向 const int 的指针
+    int const *p2 = &a;   // 与 p1 完全等价
+    int *const p3 = &a;   // const 指针，必须初始化
+
+    p1 = &b;   // OK: 指针可改
+    p2 = &b;   // OK: 指针可改
+    // *p1 = 10; // ERROR: 不能通过 p1 改值
+    // *p2 = 10; // ERROR: 不能通过 p2 改值
+
+    *p3 = 10;  // OK: 可改所指对象
+    // p3 = &b; // ERROR: p3 本身不可改指向
+
+    std::cout << "a=" << a << ", b=" << b << "\n";
+
 }
