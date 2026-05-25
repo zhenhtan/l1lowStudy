@@ -9,8 +9,8 @@ static size_t countVtableFunctionSlots(const void* obj, size_t maxScan = 64)
 {
    // This relies on the Itanium ABI layout used by GCC/Clang on Linux.
    // For single inheritance in this demo, function slots are contiguous and
-   // end at the first null entry.
-   // //
+   // end at the first null entryi.
+   // test commit
    auto vptr = *reinterpret_cast<const uintptr_t* const*>(obj);
 
    for (size_t i = 0; i < maxScan; ++i)
