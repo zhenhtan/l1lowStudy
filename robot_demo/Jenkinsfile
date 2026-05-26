@@ -39,6 +39,10 @@ pipeline {
     }
 
     post {
+        always {
+            archiveArtifacts artifacts: 'robot_demo/output.xml, robot_demo/log.html, robot_demo/report.html', fingerprint: true
+            echo 'Test reports archived!'
+        }
         success {
             echo 'Test passed!'
         }
