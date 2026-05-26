@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+
+    triggers {
+        githubPush()
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    credentialsId: 'github-credentials',
+                    url: 'https://github.com/zhenhtan/leaningProgram.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh '''
+                    echo "Installing Robot Framework..."
+                    pip install robotframework
+                '''
+            }
+        }
+
+        stage('Run Robot Test') {
+            steps {
+                sh '''
+                    echo "Running Robot test..."
+                    cd robot_demo
+                    robot example.robot
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Test passed!'
+        }
+        failure {
+            echo 'Test failed!'
+        }
+    }
+}
