@@ -19,7 +19,7 @@ pipeline {
                 sh '''
                     echo "Creating virtual environment..."
                     python3 -m venv robot_env
-                    source robot_env/bin/activate
+                    . robot_env/bin/activate
                     echo "Installing Robot Framework..."
                     pip install robotframework
                 '''
@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh '''
                     echo "Running Robot test..."
-                    source robot_env/bin/activate
+                    . robot_env/bin/activate
                     cd robot_demo
                     robot example.robot
                 '''
