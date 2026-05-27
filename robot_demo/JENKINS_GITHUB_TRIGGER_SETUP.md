@@ -329,7 +329,15 @@ Jenkins 执行 Jenkinsfile
 ```
 
 ---
+GitHub 发 Webhook 是指：当代码仓库（如 push、PR 等事件）发生指定动作时，GitHub 主动向你预设的 HTTP URL 发送 POST 请求（含事件数据），实现“事件推送”而非轮询。‌‌
 
+‌Jenkins 与 GitHub Webhook 关联的核心是：在 GitHub 配置 Webhook 指向 Jenkins 的 /github-webhook/ 接口，并在 Jenkins 任务中启用“GitHub hook trigger for GITScm polling”，从而实现代码提交后自动触发构建。‌‌‌
+
+‌GitHub 配置 Webhook‌：进入仓库 → ‌Settings → Webhooks → Add webhook‌，Payload URL 填 http(s)://<你的Jenkins地址>/github-webhook/（需公网可访问），Content type 选 application/json，选择触发事件（如 Just the push event）。
+‌Jenkins 配置接收‌：安装 ‌GitHub Plugin‌；在任务配置 → ‌Build Triggers‌ → 勾选 ‌“GitHub hook trigger for GITScm polling”‌；确保 Jenkins 未被防火墙拦截，且无须认证（或配置 Webhook 密钥验证）。
+‌验证生效‌：提交代码后，查看 GitHub Webhook 的 ‌Recent Deliveries‌ 是否有 200 响应；Jenkins 日志应显示“GitHub push event received”。‌‌
+若 Jenkins 在内网，需用 ‌ngrok‌ 或反向代理暴露地址；建议启用 ‌Webhook Secret‌（在 GitHub 和 Jenkins 插件中一致配置）提升安全。不依赖 Generic Webhook Trigger 插件时，必须用 /github-webhook/ 路径且启用对应插件。
+---
 ## 参考资源
 
 - [Jenkins GitHub Plugin](https://plugins.jenkins.io/github/)
